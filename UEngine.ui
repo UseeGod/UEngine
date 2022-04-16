@@ -27,7 +27,7 @@
      <string/>
     </property>
     <property name="placeholderText">
-     <string>Name 입력 후 엔터 (Name 등록)</string>
+     <string>Return Press After Writing App Name</string>
     </property>
    </widget>
    <widget class="QLabel" name="AppName_label">
@@ -40,7 +40,7 @@
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>Not Register App Name</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -66,7 +66,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Attach Hooking Package</string>
+     <string>Register</string>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -105,7 +105,7 @@
      </rect>
     </property>
     <property name="placeholderText">
-     <string>Package 입력 후 엔터 (Package 등록)</string>
+     <string>Return Press After Writing Package Name</string>
     </property>
    </widget>
    <widget class="QLabel" name="AppName_label_2">
@@ -118,7 +118,7 @@
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>Not Register Package Name</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -131,7 +131,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Spawn Hooking Package</string>
+     <string>Register</string>
     </property>
    </widget>
    <widget class="Line" name="line_2">
@@ -192,12 +192,86 @@
       <x>10</x>
       <y>180</y>
       <width>711</width>
-      <height>401</height>
+      <height>411</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Frida Script</string>
+     </attribute>
+     <widget class="QPushButton" name="load_btn">
+      <property name="geometry">
+       <rect>
+        <x>570</x>
+        <y>7</y>
+        <width>121</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Load Script</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="code_view">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>681</width>
+        <height>311</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="script_box">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>561</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Root Detection Bypass.js</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>System Exit Bypass.js</string>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="script_attach">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>350</y>
+        <width>261</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Script Attach</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="script_spawn">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>350</y>
+        <width>261</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Script Spawn</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Console Log</string>
@@ -212,11 +286,6 @@
        </rect>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Memory View</string>
-     </attribute>
     </widget>
    </widget>
    <widget class="QPushButton" name="AttachButton">
@@ -288,7 +357,7 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="separator"/>
+    <addaction name="actionOpen_Vile"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -299,6 +368,11 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_Vile">
+   <property name="text">
+    <string>Open Vile</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
