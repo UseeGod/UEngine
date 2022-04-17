@@ -28,9 +28,11 @@
 
 <img width="705" alt="스크린샷 2022-04-17 오후 4 24 44" src="https://user-images.githubusercontent.com/67410476/163704923-3338b6df-d86a-481c-9d32-7ca232c6eb99.png">
 
-<hr>
+# To be updated
 
+- Hooking Class & Method
+- Dump
 
-### History
+# History
 - 22-04-15 : 초기 UI 제작
 - 22-04-17 : Frida Script Load 기능 추가
