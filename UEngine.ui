@@ -244,6 +244,16 @@
         <string>System Exit Bypass.js</string>
        </property>
       </item>
+      <item>
+       <property name="text">
+        <string>Debugger conneted Bypass.js</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tracer Cipher.js</string>
+       </property>
+      </item>
      </widget>
      <widget class="QPushButton" name="script_attach">
       <property name="geometry">

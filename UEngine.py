@@ -14,26 +14,26 @@ def on_message(message, data):
     print(message)
 
 # loggin 관련
-# class StdoutRedirect(QObject):
-#     printOccur = pyqtSignal(str, str, name="print")
+class StdoutRedirect(QObject):
+    printOccur = pyqtSignal(str, str, name="print")
  
-#     def __init__(self, *param):
-#         QObject.__init__(self, None)
-#         self.daemon = True
-#         self.sysstdout = sys.stdout.write
-#         self.sysstderr = sys.stderr.write
+    def __init__(self, *param):
+        QObject.__init__(self, None)
+        self.daemon = True
+        self.sysstdout = sys.stdout.write
+        self.sysstderr = sys.stderr.write
  
-#     def stop(self):
-#         sys.stdout.write = self.sysstdout
-#         sys.stderr.write = self.sysstderr
+    def stop(self):
+        sys.stdout.write = self.sysstdout
+        sys.stderr.write = self.sysstderr
  
-#     def start(self):
-#         sys.stdout.write = self.write
-#         sys.stderr.write = lambda msg : self.write(msg, color="red")
+    def start(self):
+        sys.stdout.write = self.write
+        sys.stderr.write = lambda msg : self.write(msg, color="red")
  
-#     def write(self, s, color="black"):
-#         sys.stdout.flush()
-#         self.printOccur.emit(s, color)
+    def write(self, s, color="black"):
+        sys.stdout.flush()
+        self.printOccur.emit(s, color)
 
 #UI파일 연결
 #단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
@@ -44,7 +44,7 @@ class WindowClass(QMainWindow, form_class) :
     def __init__(self) :
         super().__init__()
         self.setupUi(self)
-        self.setWindowTitle("UseeGod Engine")
+        self.setWindowTitle("U Engine")
 
         # Attach 앱 이름
         self.AppName_lineedit.returnPressed.connect(self.getAppName)
@@ -56,9 +56,9 @@ class WindowClass(QMainWindow, form_class) :
         # JS 파일 업로드
         self.JS_btn.clicked.connect(self.Fileopen)
         # console 로그 출력
-        # self._stdout = StdoutRedirect()
-        # self._stdout.start()
-        # self._stdout.printOccur.connect(lambda x : self._append_text(x))
+        self._stdout = StdoutRedirect()
+        self._stdout.start()
+        self._stdout.printOccur.connect(lambda x : self._append_text(x))
         # ComboBox Script 선택
         self.load_btn.clicked.connect(self.SelectJS)
         self.script_attach.clicked.connect(self.ScriptAttach)
@@ -134,11 +134,11 @@ class WindowClass(QMainWindow, form_class) :
                 jscode = f.read()
 
     # 로그 출력
-    # def _append_text(self, msg):
-    #     self.console_log.moveCursor(QtGui.QTextCursor.End)
-    #     self.console_log.insertPlainText(msg)
-    #     # refresh textedit show, refer) https://doc.qt.io/qt-5/qeventloop.html#ProcessEventsFlag-enum
-    #     QApplication.processEvents(QEventLoop.ExcludeUserInputEvents)
+    def _append_text(self, msg):
+        self.console_log.moveCursor(QtGui.QTextCursor.End)
+        self.console_log.insertPlainText(msg)
+        # refresh textedit show, refer) https://doc.qt.io/qt-5/qeventloop.html#ProcessEventsFlag-enum
+        QApplication.processEvents(QEventLoop.ExcludeUserInputEvents)
 
     # Frida Script 콤보박스 선택
     def SelectJS(self):
@@ -153,6 +153,15 @@ class WindowClass(QMainWindow, form_class) :
             print("[*] System Exit Bypass.js load")
             select_js = jsScript.Exit_bypass
             self.code_view.setPlainText(select_js)
+        elif select_code == "Debugger conneted Bypass.js":
+            print("[*] Debugger conneted Bypass.js load")
+            select_js = jsScript.Debugger_bypass
+            self.code_view.setPlainText(select_js)
+        elif select_code == "Tracer Cipher.js":
+            print("[*] Tracer Cipher.js load")
+            select_js = jsScript.Trace_cipher
+            self.code_view.setPlainText(select_js)
+        
 
     # 프리다 Script Attach
     def ScriptAttach(self):
